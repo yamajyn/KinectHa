@@ -36,7 +36,7 @@ void ofApp::update(){
         //線の先端を移動させる
         tip[i] += direction[i];
         //ベクトル同士の距離がある程度離れたら後端も移動させる
-        if(tip[i].distance(end[i]) > 100){
+        if(tip[i].distance(end[i]) > ofRandom(500)){
             end[i] += direction[i];
         }
         //画面外に出たら削除
@@ -104,9 +104,22 @@ void ofApp::draw(){
     }
     
     // 線の描画色の設定
-    ofSetColor(255);
+    //ofSetColor(ofRandom(150, 255), ofRandom(150, 255), ofRandom(150, 255));
+    //ofSetLineWidth(ofRandom(1,100));
+    
+    //光る線
+    ofEnableBlendMode(OF_BLENDMODE_ADD);
+    
+    
     //手を振った数だけ線を書く
     for(int i=0; i<tip.size(); i++){
+        ofSetLineWidth(1);
+        ofSetColor(255, 255, 180);
+        ofDrawLine(tip[i].x, tip[i].y, end[i].x, end[i].y);
+        
+        int n = ofRandom(1,8);
+        ofSetLineWidth(n);
+        ofSetColor(ofRandom(50,100), ofRandom(50,180), ofRandom(200,255));
         ofDrawLine(tip[i].x, tip[i].y, end[i].x, end[i].y);
     }
 }
