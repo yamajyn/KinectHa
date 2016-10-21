@@ -107,7 +107,9 @@ void ofApp::draw(){
     //ofSetColor(ofRandom(150, 255), ofRandom(150, 255), ofRandom(150, 255));
     //ofSetLineWidth(ofRandom(1,100));
     
-    //光る線
+    
+    
+    /*光る線 中林さんの改変*/
     ofEnableBlendMode(OF_BLENDMODE_ADD);
     
     
@@ -122,6 +124,7 @@ void ofApp::draw(){
         ofSetColor(ofRandom(50,100), ofRandom(50,180), ofRandom(200,255));
         ofDrawLine(tip[i].x, tip[i].y, end[i].x, end[i].y);
     }
+    /*ここまで*/
 }
 
 //--------------------------------------------------------------
