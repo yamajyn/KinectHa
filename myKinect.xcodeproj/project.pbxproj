@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		53B8DC1D45EBD5267B24B601 /* ofxOpenNITypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1510E35407533B95F05C297D /* ofxOpenNITypes.cpp */; };
 		89D91BBAE9596D6E30AA6E35 /* ofxOpenNI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 12B3CD0D48AD549F971EB586 /* ofxOpenNI.cpp */; };
+		B33B4FE21DBDC4DB00B23155 /* Delaunay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B33B4FDD1DBDC4DB00B23155 /* Delaunay.cpp */; };
+		B33B4FE31DBDC4DB00B23155 /* ofxDelaunay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B33B4FE01DBDC4DB00B23155 /* ofxDelaunay.cpp */; };
 		B35ADA051DB4916700278B8A /* libnimCodecs.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B35AD9F71DB4916700278B8A /* libnimCodecs.dylib */; };
 		B35ADA061DB4916700278B8A /* libnimMockNodes.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B35AD9F81DB4916700278B8A /* libnimMockNodes.dylib */; };
 		B35ADA071DB4916700278B8A /* libnimRecorder.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B35AD9F91DB4916700278B8A /* libnimRecorder.dylib */; };
@@ -62,6 +64,11 @@
 		1510E35407533B95F05C297D /* ofxOpenNITypes.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxOpenNITypes.cpp; path = ../../../addons/ofxOpenNI/src/ofxOpenNITypes.cpp; sourceTree = SOURCE_ROOT; };
 		508BDAD7439107A619B851D2 /* ofxOpenNI.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxOpenNI.h; path = ../../../addons/ofxOpenNI/src/ofxOpenNI.h; sourceTree = SOURCE_ROOT; };
 		8F20CD8EDE8A4F9C69B4E8D8 /* ofxOpenNIUtils.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxOpenNIUtils.h; path = ../../../addons/ofxOpenNI/src/ofxOpenNIUtils.h; sourceTree = SOURCE_ROOT; };
+		B33B4FD91DBDC4DB00B23155 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		B33B4FDD1DBDC4DB00B23155 /* Delaunay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Delaunay.cpp; sourceTree = "<group>"; };
+		B33B4FDE1DBDC4DB00B23155 /* Delaunay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Delaunay.h; sourceTree = "<group>"; };
+		B33B4FE01DBDC4DB00B23155 /* ofxDelaunay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxDelaunay.cpp; sourceTree = "<group>"; };
+		B33B4FE11DBDC4DB00B23155 /* ofxDelaunay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxDelaunay.h; sourceTree = "<group>"; };
 		B35AD96D1DB48E2B00278B8A /* libusb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = libusb.h; sourceTree = "<group>"; };
 		B35AD96F1DB48E2B00278B8A /* XnCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XnCommon.h; sourceTree = "<group>"; };
 		B35AD9701DB48E2B00278B8A /* XnV3DVector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XnV3DVector.h; sourceTree = "<group>"; };
@@ -269,6 +276,50 @@
 			children = (
 			);
 			name = local_addons;
+			sourceTree = "<group>";
+		};
+		B33B4FD81DBDC4DB00B23155 /* ofxDelaunay */ = {
+			isa = PBXGroup;
+			children = (
+				B33B4FD91DBDC4DB00B23155 /* .gitignore */,
+				B33B4FDA1DBDC4DB00B23155 /* libs */,
+				B33B4FDF1DBDC4DB00B23155 /* src */,
+			);
+			path = ofxDelaunay;
+			sourceTree = "<group>";
+		};
+		B33B4FDA1DBDC4DB00B23155 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				B33B4FDB1DBDC4DB00B23155 /* Delaunay */,
+			);
+			path = libs;
+			sourceTree = "<group>";
+		};
+		B33B4FDB1DBDC4DB00B23155 /* Delaunay */ = {
+			isa = PBXGroup;
+			children = (
+				B33B4FDC1DBDC4DB00B23155 /* src */,
+			);
+			path = Delaunay;
+			sourceTree = "<group>";
+		};
+		B33B4FDC1DBDC4DB00B23155 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				B33B4FDD1DBDC4DB00B23155 /* Delaunay.cpp */,
+				B33B4FDE1DBDC4DB00B23155 /* Delaunay.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		B33B4FDF1DBDC4DB00B23155 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				B33B4FE01DBDC4DB00B23155 /* ofxDelaunay.cpp */,
+				B33B4FE11DBDC4DB00B23155 /* ofxDelaunay.h */,
+			);
+			path = src;
 			sourceTree = "<group>";
 		};
 		B35AD96B1DB48E2B00278B8A /* include */ = {
@@ -504,6 +555,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				B33B4FD81DBDC4DB00B23155 /* ofxDelaunay */,
 				4D153BDEF846FA13A4C07F5F /* ofxOpenNI */,
 			);
 			name = addons;
@@ -636,7 +688,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B33B4FE21DBDC4DB00B23155 /* Delaunay.cpp in Sources */,
 				B3F950FC1DB75F2500CB3AFE /* ofApp.cpp in Sources */,
+				B33B4FE31DBDC4DB00B23155 /* ofxDelaunay.cpp in Sources */,
 				89D91BBAE9596D6E30AA6E35 /* ofxOpenNI.cpp in Sources */,
 				53B8DC1D45EBD5267B24B601 /* ofxOpenNITypes.cpp in Sources */,
 				B3F950FB1DB75F2500CB3AFE /* main.cpp in Sources */,

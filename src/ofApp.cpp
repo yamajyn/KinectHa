@@ -20,10 +20,11 @@ void ofApp::setup(){
     kinect.addAllHandFocusGestures();
     
     // 検出する手の数の設定
-    kinect.setMaxNumHands(2);
+    kinect.setMaxNumHands(3);
     
     // Kinect開始
     kinect.start();
+    
 }
 
 //--------------------------------------------------------------
@@ -36,7 +37,7 @@ void ofApp::update(){
         //線の先端を移動させる
         tip[i] += direction[i];
         //ベクトル同士の距離がある程度離れたら後端も移動させる
-        if(tip[i].distance(end[i]) > ofRandom(500)){
+        if(tip[i].distance(end[i]) > 500){
             end[i] += direction[i];
         }
         //画面外に出たら削除
@@ -51,13 +52,15 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
+    
+    delaunay.reset();
     // 描画色の設定
     ofBackground(0, 0, 0);
     ofSetColor(255, 255, 255);
     // 距離画像の描画
     //kinect.drawDepth(0, 0, 640, 480);
     // RGB画像の描画
-    kinect.drawImage(0, 0, 640, 480);
+    //kinect.drawImage(0, 0, 640, 480);
     
     // 検出した手の数を取得
     int numHands = kinect.getNumTrackedHands();
@@ -125,11 +128,61 @@ void ofApp::draw(){
         ofDrawLine(tip[i].x, tip[i].y, end[i].x, end[i].y);
     }
     /*ここまで*/
+    /*
+    kinect.drawDepth();
+    
+    int step = 20;
+    
+    for (int j = 0; j < 640; j += step) {
+        for (int i = 0; i < 480; i += step) {
+            
+            float distance = kinect.getDepthThreshold(<#int index#>)
+            
+            if (distance > 50 && distance < 1000) {
+                ofSetColor(0);
+                
+                //ofPushMatrix();
+                
+                //ofTranslate(i - kinect.width, j - kinect.height, distance * -2.0);
+                
+                //ofDrawCircle(0, 0, 1);
+                
+                delaunay.addPoint(4*i - kinectD.width, 4*j - kinectD.height, distance* -2.0);
+                
+                //ofPopMatrix();
+            }
+        }
+    }*/
+    
+    int step = 15;
+    //ofPixels RGBPixels = kinect.getImagePixels();
+    ofShortPixels depthRawPixels = kinect.getDepthRawPixels();
+    for(int y = 0; y < 480; y += step){
+        for(int x = 0; x < 640; x += step){
+            int distance = depthRawPixels.getData()[640 * y + x];
+            if(distance>1000 &&distance <2000){
+                delaunay.addPoint(x, y, -distance);
+            }
+        }
+    }
+    ofNoFill();
+    ofSetColor(255);
+    ofSetLineWidth(0.5);
+    delaunay.triangulate();
+    ofPushMatrix();
+    
+    ofScale(4, 4, 1); // 上下と前後を反転
+    ofTranslate(-200,-220,0);
+    delaunay.draw();
+    ofPopMatrix();
 }
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
-
+    if(key == ' '){
+        myImage.grabScreen(0, 0, 640, 480);
+        myImage.save("jaket.png");
+    }
 }
 
 //--------------------------------------------------------------

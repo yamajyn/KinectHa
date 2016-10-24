@@ -2,6 +2,7 @@
 
 #include "ofMain.h"
 #include "ofxOpenNI.h" // addonを読み込み
+#include "ofxDelaunay.h"
 
 class ofApp : public ofBaseApp{
 
@@ -22,6 +23,7 @@ public:
 	
 private:
     ofxOpenNI kinect; // インスタンス
+    ofxDelaunay delaunay;
     ofVec3f pastVec[4];
     ofVec3f mPastVec;
     float strength[3];
@@ -29,4 +31,6 @@ private:
     vector <ofVec3f> tip;//線の先端
     vector <ofVec3f> end;//線の後端
     vector <ofVec3f> direction;//発射する線の方向ベクトル
+    
+    ofImage myImage;
 };
